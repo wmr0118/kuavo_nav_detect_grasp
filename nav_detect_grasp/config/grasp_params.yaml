@@ -1,0 +1,54 @@
+# Grasp parameters for nav_detect_grasp demo
+
+# Grasp approach parameters
+grasp:
+  approach_distance: 0.2            # Distance to approach target (m)
+  hand_separation: 0.15             # Distance between hands (m)
+  approach_height: 0.1              # Height above target for approach (m)
+  grasp_height_offset: 0.05         # Height offset for grasp (m)
+  pre_grasp_duration: 2.0           # Duration for pre-grasp pose (s)
+  grasp_duration: 3.0               # Duration for grasp execution (s)
+  post_grasp_duration: 2.0          # Duration for post-grasp pose (s)
+
+# Hand control parameters
+hand_control:
+  gripper_open_position: 90         # Gripper open position (0-100)
+  gripper_close_position: 10        # Gripper close position (0-100)
+  gripper_velocity: 50              # Gripper velocity (0-100)
+  gripper_effort: 1.0               # Gripper effort (A)
+  hand_open_delay: 1.0              # Delay after opening hand (s)
+  hand_close_delay: 1.0             # Delay after closing hand (s)
+
+# Arm control parameters
+arm_control:
+  joint_velocity_limit: 0.5         # Joint velocity limit (rad/s)
+  position_tolerance: 0.01          # Position tolerance (m)
+  orientation_tolerance: 0.05       # Orientation tolerance (rad)
+  ik_timeout: 5.0                   # IK solving timeout (s)
+  max_ik_iterations: 100            # Maximum IK iterations
+
+# Safety parameters
+safety:
+  min_grasp_distance: 0.3           # Minimum distance for safe grasp (m)
+  max_grasp_distance: 1.5           # Maximum distance for safe grasp (m)
+  collision_check_distance: 0.1     # Distance for collision checking (m)
+  emergency_stop_timeout: 0.5       # Emergency stop timeout (s)
+
+# Object-specific grasp parameters
+object_grasps:
+  cup:
+    hand_side: "right"              # Which hand to use
+    grasp_orientation: [0, -1.57, 0] # Grasp orientation (roll, pitch, yaw)
+    approach_direction: [0, 0, -1]   # Approach direction
+  bottle:
+    hand_side: "left"
+    grasp_orientation: [0, -1.57, 0]
+    approach_direction: [0, 0, -1]
+  book:
+    hand_side: "right"
+    grasp_orientation: [0, 0, 0]
+    approach_direction: [0, 0, -1]
+  box:
+    hand_side: "left"
+    grasp_orientation: [0, -1.57, 0]
+    approach_direction: [0, 0, -1] 
