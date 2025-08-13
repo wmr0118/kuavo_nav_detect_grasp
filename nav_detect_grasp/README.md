@@ -26,7 +26,7 @@
 
 ### 硬件要求
 - Kuavo人形机器人
-- RealSense或ZED相机（支持深度信息）
+- Gemini-335L相机（推荐，官方标配）、RealSense或ZED相机（支持深度信息）
 - AprilTag标记（可选，用于精确定位）
 - 目标物体（水杯、瓶子、书本等）
 
@@ -35,7 +35,8 @@
 - Kuavo Humanoid SDK
 - AprilTag ROS包 (`aruco_ros`)
 - YOLOv8 (`ultralytics`)
-- RealSense2或ZED相机驱动
+- Gemini-335L相机驱动（`dynamic_biped`，官方推荐）
+- RealSense2或ZED相机驱动（可选）
 - OpenCV (`cv_bridge`)
 
 ## 安装和编译

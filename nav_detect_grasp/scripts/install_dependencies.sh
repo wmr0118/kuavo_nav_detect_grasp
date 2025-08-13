@@ -65,6 +65,12 @@ sudo apt-get install -y \
     ros-$ROS_DISTRO-gmapping \
     ros-$ROS_DISTRO-amcl
 
+# 注意：Gemini-335L相机驱动需要从官方仓库获取
+print_info "Gemini-335L相机驱动说明："
+print_info "- 该相机使用奥比中光(Orbbec)驱动"
+print_info "- 需要从官方仓库获取dynamic_biped包"
+print_info "- 或使用use_orbbec:=true参数启动"
+
 # 安装Python依赖
 print_info "安装Python依赖..."
 sudo apt-get install -y \

@@ -74,13 +74,32 @@ class ComponentTester:
         """测试相机流"""
         print("4. 测试相机流...")
         try:
-            # 等待相机图像话题
-            msg = rospy.wait_for_message("/camera/color/image_raw", Image, timeout=self.timeout)
-            self.test_results['camera_stream'] = True
-            print(f"   ✓ 相机流正常，图像尺寸: {msg.width}x{msg.height}")
-        except rospy.ROSException:
+            # 尝试多个可能的相机话题
+            camera_topics = [
+                "/camera/color/image_raw",      # RealSense
+                "/camera/image_raw",            # Gemini-335L
+                "/zed/left/image_rect_color"    # ZED
+            ]
+            
+            msg = None
+            for topic in camera_topics:
+                try:
+                    msg = rospy.wait_for_message(topic, Image, timeout=2.0)
+                    print(f"   ✓ 检测到相机话题: {topic}")
+                    break
+                except rospy.ROSException:
+                    continue
+            
+            if msg is not None:
+                self.test_results['camera_stream'] = True
+                print(f"   ✓ 相机流正常，图像尺寸: {msg.width}x{msg.height}")
+            else:
+                self.test_results['camera_stream'] = False
+                print("   ✗ 相机流失败或未启动")
+                
+        except Exception as e:
             self.test_results['camera_stream'] = False
-            print("   ✗ 相机流失败或未启动")
+            print(f"   ✗ 相机流测试异常: {e}")
     
     def test_robot_control(self):
         """测试机器人控制"""

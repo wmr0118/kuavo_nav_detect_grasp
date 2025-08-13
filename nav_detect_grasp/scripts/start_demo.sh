@@ -163,6 +163,12 @@ start_camera() {
                 print_warning "ZED相机驱动未安装，跳过相机启动"
             fi
             ;;
+        "gemini")
+            print_info "启动Gemini-335L相机..."
+            # 使用官方推荐的启动方式
+            roslaunch dynamic_biped load_robot_head.launch use_orbbec:=true &
+            sleep 3
+            ;;
         *)
             print_warning "未知相机类型，跳过相机启动"
             ;;
@@ -220,6 +226,8 @@ show_usage() {
     echo "  $0 simulation         # 仿真模式 + RealSense相机"
     echo "  $0 real zed          # 实物模式 + ZED相机"
     echo "  $0 simulation zed    # 仿真模式 + ZED相机"
+    echo "  $0 real gemini       # 实物模式 + Gemini-335L相机"
+    echo "  $0 simulation gemini # 仿真模式 + Gemini-335L相机"
     echo ""
     echo "注意事项:"
     echo "  1. 确保ROS环境已设置"
@@ -247,7 +255,7 @@ main() {
         exit 1
     fi
     
-    if [ "$camera_type" != "realsense" ] && [ "$camera_type" != "zed" ]; then
+    if [ "$camera_type" != "realsense" ] && [ "$camera_type" != "zed" ] && [ "$camera_type" != "gemini" ]; then
         print_error "无效的相机类型: $camera_type"
         show_usage
         exit 1

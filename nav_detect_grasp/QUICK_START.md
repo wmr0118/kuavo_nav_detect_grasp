@@ -15,6 +15,9 @@ cd src/demo/trace_path/nav_detect_grasp
 
 # 使用ZED相机
 ./scripts/start_demo.sh real zed
+
+# 使用Gemini-335L相机（推荐，官方标配）
+./scripts/start_demo.sh real gemini
 ```
 
 ### 方法2: 手动启动
@@ -37,7 +40,7 @@ rviz -d rviz/nav_detect_grasp.rviz
 ### 系统要求
 - Ubuntu 20.04 + ROS Noetic
 - Python 3.8+
-- 相机：RealSense D435i 或 ZED
+- 相机：Gemini-335L（推荐）、RealSense D435i 或 ZED
 
 ### 硬件要求
 - Kuavo人形机器人
@@ -55,6 +58,8 @@ rviz -d rviz/nav_detect_grasp.rviz
 # 或手动安装
 sudo apt-get install ros-noetic-apriltag-ros ros-noetic-realsense2-camera
 pip3 install ultralytics opencv-python numpy
+
+# 注意：Gemini-335L相机驱动需要从官方仓库获取dynamic_biped包
 ```
 
 ### 2. 编译工作空间

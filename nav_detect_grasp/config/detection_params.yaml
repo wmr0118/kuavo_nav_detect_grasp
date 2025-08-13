@@ -18,10 +18,23 @@ yolo:
 
 # Camera parameters
 camera:
-  image_topic: "/camera/color/image_raw"
-  depth_topic: "/camera/depth/image_rect_raw"
-  camera_info_topic: "/camera/color/camera_info"
-  frame_id: "head_camera_color_optical_frame"
+  # Gemini-335L相机话题（默认，官方标配）
+  image_topic: "/camera/image_raw"
+  depth_topic: "/camera/depth/image_raw"
+  camera_info_topic: "/camera/camera_info"
+  frame_id: "camera_link"
+  
+  # RealSense相机话题（可选）
+  # image_topic: "/camera/color/image_raw"
+  # depth_topic: "/camera/depth/image_rect_raw"
+  # camera_info_topic: "/camera/color/camera_info"
+  # frame_id: "head_camera_color_optical_frame"
+  
+  # ZED相机话题（可选）
+  # image_topic: "/zed/left/image_rect_color"
+  # depth_topic: "/zed/depth/depth_registered"
+  # camera_info_topic: "/zed/left/camera_info"
+  # frame_id: "zed_left_camera_optical_frame"
 
 # Object pose estimation parameters
 pose_estimation:
